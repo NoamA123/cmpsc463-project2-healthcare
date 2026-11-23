@@ -11,13 +11,13 @@ Our chosen application is a Fair Appointment Scheduler and Policy Simulator. A s
 
 Algorithms used
 
-        Component	                                Algorithm / structure
-Scheduling policies	            Greedy by weight/length ratio, plus FIFO, shortest-visit-first, urgency-first as baselines
-Dispatch to providers	          Min-heap keyed on provider's next free time	
-Patient lookup	                Hash table (id → record)	
-Open appointment slots	        BST with insert, delete, and "earliest slot ≥ t" queries	
-Ranking disagreement	          Inversion counting (O(n log n)), normalized by n(n-1)/2, computed overall and per group	
-Wait-time statistics	          Rselect/Dselect for median, 90th percentile, and top-k longest waits, benchmarked against sort-based versions
+        Component	                Algorithm / structure
+        Scheduling policies	        Greedy by weight/length ratio, plus FIFO, shortest-visit-first, urgency-first as baselines
+        Dispatch to providers	        Min-heap keyed on provider's next free time	
+        Patient lookup	                Hash table (id → record)	
+        Open appointment slots	        BST with insert, delete, and "earliest slot ≥ t" queries	
+        Ranking disagreement	          Inversion counting (O(n log n)), normalized by n(n-1)/2, computed overall and per group	
+        Wait-time statistics	          Rselect/Dselect for median, 90th percentile, and top-k longest waits, benchmarked against sort-based versions
 
 Division of responsibilities
 
