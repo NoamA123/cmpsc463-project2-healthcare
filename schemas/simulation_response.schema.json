@@ -1,0 +1,376 @@
+{
+  "$defs": {
+    "Appointment": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "provider_id": {
+          "title": "Provider Id",
+          "type": "string"
+        },
+        "start": {
+          "title": "Start",
+          "type": "integer"
+        },
+        "end": {
+          "title": "End",
+          "type": "integer"
+        },
+        "wait": {
+          "title": "Wait",
+          "type": "integer"
+        },
+        "order": {
+          "description": "0-based rank of the appointment by (start, provider_id).",
+          "title": "Order",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "patient_id",
+        "provider_id",
+        "start",
+        "end",
+        "wait",
+        "order"
+      ],
+      "title": "Appointment",
+      "type": "object"
+    },
+    "EngineInfo": {
+      "additionalProperties": false,
+      "description": "Which implementation produced a result: the team's own code, or the\nbuiltin-based reference in ``fairsched.reference`` used as a fallback.",
+      "properties": {
+        "scheduler": {
+          "title": "Scheduler",
+          "type": "string"
+        },
+        "analytics": {
+          "title": "Analytics",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scheduler",
+        "analytics"
+      ],
+      "title": "EngineInfo",
+      "type": "object"
+    },
+    "FairnessStats": {
+      "additionalProperties": false,
+      "description": "Inversions between the service order and a reference ranking.\n\n``disagreement_* = inversions / (n * (n - 1) / 2)`` in [0, 1] (0 when n < 2).\nUnserved patients are placed after all served ones, in arrival order.",
+      "properties": {
+        "n": {
+          "title": "N",
+          "type": "integer"
+        },
+        "inversions_vs_arrival": {
+          "title": "Inversions Vs Arrival",
+          "type": "integer"
+        },
+        "inversions_vs_urgency": {
+          "title": "Inversions Vs Urgency",
+          "type": "integer"
+        },
+        "disagreement_vs_arrival": {
+          "title": "Disagreement Vs Arrival",
+          "type": "number"
+        },
+        "disagreement_vs_urgency": {
+          "title": "Disagreement Vs Urgency",
+          "type": "number"
+        }
+      },
+      "required": [
+        "n",
+        "inversions_vs_arrival",
+        "inversions_vs_urgency",
+        "disagreement_vs_arrival",
+        "disagreement_vs_urgency"
+      ],
+      "title": "FairnessStats",
+      "type": "object"
+    },
+    "GroupMetrics": {
+      "additionalProperties": false,
+      "properties": {
+        "group": {
+          "title": "Group",
+          "type": "string"
+        },
+        "served": {
+          "title": "Served",
+          "type": "integer"
+        },
+        "unserved": {
+          "title": "Unserved",
+          "type": "integer"
+        },
+        "waits": {
+          "$ref": "#/$defs/WaitStats"
+        },
+        "fairness": {
+          "$ref": "#/$defs/FairnessStats"
+        }
+      },
+      "required": [
+        "group",
+        "served",
+        "unserved",
+        "waits",
+        "fairness"
+      ],
+      "title": "GroupMetrics",
+      "type": "object"
+    },
+    "PatientWait": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "wait": {
+          "title": "Wait",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "patient_id",
+        "wait"
+      ],
+      "title": "PatientWait",
+      "type": "object"
+    },
+    "PolicyMetrics": {
+      "additionalProperties": false,
+      "properties": {
+        "served": {
+          "title": "Served",
+          "type": "integer"
+        },
+        "unserved": {
+          "title": "Unserved",
+          "type": "integer"
+        },
+        "makespan": {
+          "description": "End time of the last appointment.",
+          "title": "Makespan",
+          "type": "integer"
+        },
+        "total_weighted_wait": {
+          "title": "Total Weighted Wait",
+          "type": "number"
+        },
+        "provider_utilization": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "description": "Busy minutes / shift minutes, per provider.",
+          "title": "Provider Utilization",
+          "type": "object"
+        },
+        "waits": {
+          "$ref": "#/$defs/WaitStats"
+        },
+        "fairness": {
+          "$ref": "#/$defs/FairnessStats"
+        },
+        "per_group": {
+          "items": {
+            "$ref": "#/$defs/GroupMetrics"
+          },
+          "title": "Per Group",
+          "type": "array"
+        }
+      },
+      "required": [
+        "served",
+        "unserved",
+        "makespan",
+        "total_weighted_wait",
+        "provider_utilization",
+        "waits",
+        "fairness",
+        "per_group"
+      ],
+      "title": "PolicyMetrics",
+      "type": "object"
+    },
+    "PolicyName": {
+      "enum": [
+        "fifo",
+        "sjf",
+        "urgency",
+        "wspt",
+        "optimal"
+      ],
+      "title": "PolicyName",
+      "type": "string"
+    },
+    "PolicyResult": {
+      "additionalProperties": false,
+      "properties": {
+        "policy": {
+          "$ref": "#/$defs/PolicyName"
+        },
+        "schedule": {
+          "$ref": "#/$defs/Schedule"
+        },
+        "metrics": {
+          "$ref": "#/$defs/PolicyMetrics"
+        },
+        "engine": {
+          "$ref": "#/$defs/EngineInfo"
+        },
+        "runtime_ms": {
+          "title": "Runtime Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "policy",
+        "schedule",
+        "metrics",
+        "engine",
+        "runtime_ms"
+      ],
+      "title": "PolicyResult",
+      "type": "object"
+    },
+    "Schedule": {
+      "additionalProperties": false,
+      "description": "What a scheduler produces, before analytics.",
+      "properties": {
+        "policy": {
+          "$ref": "#/$defs/PolicyName"
+        },
+        "appointments": {
+          "items": {
+            "$ref": "#/$defs/Appointment"
+          },
+          "title": "Appointments",
+          "type": "array"
+        },
+        "unserved": {
+          "description": "Patient ids never seen, in arrival order.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Unserved",
+          "type": "array"
+        }
+      },
+      "required": [
+        "policy",
+        "appointments",
+        "unserved"
+      ],
+      "title": "Schedule",
+      "type": "object"
+    },
+    "WaitStats": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        },
+        "mean": {
+          "title": "Mean",
+          "type": "number"
+        },
+        "median": {
+          "title": "Median",
+          "type": "number"
+        },
+        "p90": {
+          "title": "P90",
+          "type": "number"
+        },
+        "max": {
+          "title": "Max",
+          "type": "integer"
+        },
+        "top_k": {
+          "description": "Longest waits, descending.",
+          "items": {
+            "$ref": "#/$defs/PatientWait"
+          },
+          "title": "Top K",
+          "type": "array"
+        }
+      },
+      "required": [
+        "count",
+        "mean",
+        "median",
+        "p90",
+        "max",
+        "top_k"
+      ],
+      "title": "WaitStats",
+      "type": "object"
+    },
+    "WeightConfig": {
+      "additionalProperties": false,
+      "description": "weight(p, t) = urgency ** urgency_power * group_multipliers.get(group, 1)\n+ aging_rate * (t - arrival_time)",
+      "properties": {
+        "urgency_power": {
+          "default": 1.0,
+          "minimum": 0,
+          "title": "Urgency Power",
+          "type": "number"
+        },
+        "group_multipliers": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Group Multipliers",
+          "type": "object"
+        },
+        "aging_rate": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Aging Rate",
+          "type": "number"
+        }
+      },
+      "title": "WeightConfig",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "dataset_name": {
+      "title": "Dataset Name",
+      "type": "string"
+    },
+    "weights": {
+      "$ref": "#/$defs/WeightConfig"
+    },
+    "results": {
+      "items": {
+        "$ref": "#/$defs/PolicyResult"
+      },
+      "title": "Results",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dataset_name",
+    "weights",
+    "results"
+  ],
+  "title": "SimulationResponse",
+  "type": "object"
+}

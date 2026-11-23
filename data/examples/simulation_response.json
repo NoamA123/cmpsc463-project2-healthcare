@@ -1,0 +1,958 @@
+{
+  "schema_version": "1.0",
+  "dataset_name": "tiny",
+  "weights": {
+    "urgency_power": 2.0,
+    "group_multipliers": {
+      "uninsured": 1.5
+    },
+    "aging_rate": 0.05
+  },
+  "results": [
+    {
+      "policy": "fifo",
+      "schedule": {
+        "policy": "fifo",
+        "appointments": [
+          {
+            "patient_id": "P01",
+            "provider_id": "D01",
+            "start": 0,
+            "end": 30,
+            "wait": 0,
+            "order": 0
+          },
+          {
+            "patient_id": "P02",
+            "provider_id": "D02",
+            "start": 5,
+            "end": 15,
+            "wait": 0,
+            "order": 1
+          },
+          {
+            "patient_id": "P03",
+            "provider_id": "D02",
+            "start": 15,
+            "end": 35,
+            "wait": 5,
+            "order": 2
+          },
+          {
+            "patient_id": "P04",
+            "provider_id": "D01",
+            "start": 30,
+            "end": 35,
+            "wait": 18,
+            "order": 3
+          },
+          {
+            "patient_id": "P05",
+            "provider_id": "D01",
+            "start": 35,
+            "end": 75,
+            "wait": 20,
+            "order": 4
+          },
+          {
+            "patient_id": "P06",
+            "provider_id": "D02",
+            "start": 35,
+            "end": 50,
+            "wait": 15,
+            "order": 5
+          }
+        ],
+        "unserved": []
+      },
+      "metrics": {
+        "served": 6,
+        "unserved": 0,
+        "makespan": 75,
+        "total_weighted_wait": 983.6999999999999,
+        "provider_utilization": {
+          "D01": 0.625,
+          "D02": 0.375
+        },
+        "waits": {
+          "count": 6,
+          "mean": 9.666666666666666,
+          "median": 10.0,
+          "p90": 20.0,
+          "max": 20,
+          "top_k": [
+            {
+              "patient_id": "P05",
+              "wait": 20
+            },
+            {
+              "patient_id": "P04",
+              "wait": 18
+            },
+            {
+              "patient_id": "P06",
+              "wait": 15
+            }
+          ]
+        },
+        "fairness": {
+          "n": 6,
+          "inversions_vs_arrival": 0,
+          "inversions_vs_urgency": 8,
+          "disagreement_vs_arrival": 0.0,
+          "disagreement_vs_urgency": 0.5333333333333333
+        },
+        "per_group": [
+          {
+            "group": "private",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 10.0,
+              "median": 10.0,
+              "p90": 20.0,
+              "max": 20,
+              "top_k": [
+                {
+                  "patient_id": "P05",
+                  "wait": 20
+                },
+                {
+                  "patient_id": "P01",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          },
+          {
+            "group": "public",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 10.0,
+              "median": 10.0,
+              "p90": 15.0,
+              "max": 15,
+              "top_k": [
+                {
+                  "patient_id": "P06",
+                  "wait": 15
+                },
+                {
+                  "patient_id": "P03",
+                  "wait": 5
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 0,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 0.0
+            }
+          },
+          {
+            "group": "uninsured",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 9.0,
+              "median": 9.0,
+              "p90": 18.0,
+              "max": 18,
+              "top_k": [
+                {
+                  "patient_id": "P04",
+                  "wait": 18
+                },
+                {
+                  "patient_id": "P02",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          }
+        ]
+      },
+      "engine": {
+        "scheduler": "reference",
+        "analytics": "reference"
+      },
+      "runtime_ms": 0.25200005620718
+    },
+    {
+      "policy": "sjf",
+      "schedule": {
+        "policy": "sjf",
+        "appointments": [
+          {
+            "patient_id": "P01",
+            "provider_id": "D01",
+            "start": 0,
+            "end": 30,
+            "wait": 0,
+            "order": 0
+          },
+          {
+            "patient_id": "P02",
+            "provider_id": "D02",
+            "start": 5,
+            "end": 15,
+            "wait": 0,
+            "order": 1
+          },
+          {
+            "patient_id": "P04",
+            "provider_id": "D02",
+            "start": 15,
+            "end": 20,
+            "wait": 3,
+            "order": 2
+          },
+          {
+            "patient_id": "P06",
+            "provider_id": "D02",
+            "start": 20,
+            "end": 35,
+            "wait": 0,
+            "order": 3
+          },
+          {
+            "patient_id": "P03",
+            "provider_id": "D01",
+            "start": 30,
+            "end": 50,
+            "wait": 20,
+            "order": 4
+          },
+          {
+            "patient_id": "P05",
+            "provider_id": "D02",
+            "start": 35,
+            "end": 75,
+            "wait": 20,
+            "order": 5
+          }
+        ],
+        "unserved": []
+      },
+      "metrics": {
+        "served": 6,
+        "unserved": 0,
+        "makespan": 75,
+        "total_weighted_wait": 412.95,
+        "provider_utilization": {
+          "D01": 0.4166666666666667,
+          "D02": 0.5833333333333334
+        },
+        "waits": {
+          "count": 6,
+          "mean": 7.166666666666667,
+          "median": 1.5,
+          "p90": 20.0,
+          "max": 20,
+          "top_k": [
+            {
+              "patient_id": "P03",
+              "wait": 20
+            },
+            {
+              "patient_id": "P05",
+              "wait": 20
+            },
+            {
+              "patient_id": "P04",
+              "wait": 3
+            }
+          ]
+        },
+        "fairness": {
+          "n": 6,
+          "inversions_vs_arrival": 3,
+          "inversions_vs_urgency": 9,
+          "disagreement_vs_arrival": 0.2,
+          "disagreement_vs_urgency": 0.6
+        },
+        "per_group": [
+          {
+            "group": "private",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 10.0,
+              "median": 10.0,
+              "p90": 20.0,
+              "max": 20,
+              "top_k": [
+                {
+                  "patient_id": "P05",
+                  "wait": 20
+                },
+                {
+                  "patient_id": "P01",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          },
+          {
+            "group": "public",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 10.0,
+              "median": 10.0,
+              "p90": 20.0,
+              "max": 20,
+              "top_k": [
+                {
+                  "patient_id": "P03",
+                  "wait": 20
+                },
+                {
+                  "patient_id": "P06",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 1,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 1.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          },
+          {
+            "group": "uninsured",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 1.5,
+              "median": 1.5,
+              "p90": 3.0,
+              "max": 3,
+              "top_k": [
+                {
+                  "patient_id": "P04",
+                  "wait": 3
+                },
+                {
+                  "patient_id": "P02",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          }
+        ]
+      },
+      "engine": {
+        "scheduler": "reference",
+        "analytics": "reference"
+      },
+      "runtime_ms": 0.14880008529871702
+    },
+    {
+      "policy": "urgency",
+      "schedule": {
+        "policy": "urgency",
+        "appointments": [
+          {
+            "patient_id": "P01",
+            "provider_id": "D01",
+            "start": 0,
+            "end": 30,
+            "wait": 0,
+            "order": 0
+          },
+          {
+            "patient_id": "P02",
+            "provider_id": "D02",
+            "start": 5,
+            "end": 15,
+            "wait": 0,
+            "order": 1
+          },
+          {
+            "patient_id": "P04",
+            "provider_id": "D02",
+            "start": 15,
+            "end": 20,
+            "wait": 3,
+            "order": 2
+          },
+          {
+            "patient_id": "P05",
+            "provider_id": "D02",
+            "start": 20,
+            "end": 60,
+            "wait": 5,
+            "order": 3
+          },
+          {
+            "patient_id": "P03",
+            "provider_id": "D01",
+            "start": 30,
+            "end": 50,
+            "wait": 20,
+            "order": 4
+          },
+          {
+            "patient_id": "P06",
+            "provider_id": "D01",
+            "start": 50,
+            "end": 65,
+            "wait": 30,
+            "order": 5
+          }
+        ],
+        "unserved": []
+      },
+      "metrics": {
+        "served": 6,
+        "unserved": 0,
+        "makespan": 65,
+        "total_weighted_wait": 424.2,
+        "provider_utilization": {
+          "D01": 0.5416666666666666,
+          "D02": 0.4583333333333333
+        },
+        "waits": {
+          "count": 6,
+          "mean": 9.666666666666666,
+          "median": 4.0,
+          "p90": 30.0,
+          "max": 30,
+          "top_k": [
+            {
+              "patient_id": "P06",
+              "wait": 30
+            },
+            {
+              "patient_id": "P03",
+              "wait": 20
+            },
+            {
+              "patient_id": "P05",
+              "wait": 5
+            }
+          ]
+        },
+        "fairness": {
+          "n": 6,
+          "inversions_vs_arrival": 2,
+          "inversions_vs_urgency": 6,
+          "disagreement_vs_arrival": 0.13333333333333333,
+          "disagreement_vs_urgency": 0.4
+        },
+        "per_group": [
+          {
+            "group": "private",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 2.5,
+              "median": 2.5,
+              "p90": 5.0,
+              "max": 5,
+              "top_k": [
+                {
+                  "patient_id": "P05",
+                  "wait": 5
+                },
+                {
+                  "patient_id": "P01",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          },
+          {
+            "group": "public",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 25.0,
+              "median": 25.0,
+              "p90": 30.0,
+              "max": 30,
+              "top_k": [
+                {
+                  "patient_id": "P06",
+                  "wait": 30
+                },
+                {
+                  "patient_id": "P03",
+                  "wait": 20
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 0,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 0.0
+            }
+          },
+          {
+            "group": "uninsured",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 1.5,
+              "median": 1.5,
+              "p90": 3.0,
+              "max": 3,
+              "top_k": [
+                {
+                  "patient_id": "P04",
+                  "wait": 3
+                },
+                {
+                  "patient_id": "P02",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          }
+        ]
+      },
+      "engine": {
+        "scheduler": "reference",
+        "analytics": "reference"
+      },
+      "runtime_ms": 0.12489990331232548
+    },
+    {
+      "policy": "wspt",
+      "schedule": {
+        "policy": "wspt",
+        "appointments": [
+          {
+            "patient_id": "P01",
+            "provider_id": "D01",
+            "start": 0,
+            "end": 30,
+            "wait": 0,
+            "order": 0
+          },
+          {
+            "patient_id": "P02",
+            "provider_id": "D02",
+            "start": 5,
+            "end": 15,
+            "wait": 0,
+            "order": 1
+          },
+          {
+            "patient_id": "P04",
+            "provider_id": "D02",
+            "start": 15,
+            "end": 20,
+            "wait": 3,
+            "order": 2
+          },
+          {
+            "patient_id": "P06",
+            "provider_id": "D02",
+            "start": 20,
+            "end": 35,
+            "wait": 0,
+            "order": 3
+          },
+          {
+            "patient_id": "P03",
+            "provider_id": "D01",
+            "start": 30,
+            "end": 50,
+            "wait": 20,
+            "order": 4
+          },
+          {
+            "patient_id": "P05",
+            "provider_id": "D02",
+            "start": 35,
+            "end": 75,
+            "wait": 20,
+            "order": 5
+          }
+        ],
+        "unserved": []
+      },
+      "metrics": {
+        "served": 6,
+        "unserved": 0,
+        "makespan": 75,
+        "total_weighted_wait": 412.95,
+        "provider_utilization": {
+          "D01": 0.4166666666666667,
+          "D02": 0.5833333333333334
+        },
+        "waits": {
+          "count": 6,
+          "mean": 7.166666666666667,
+          "median": 1.5,
+          "p90": 20.0,
+          "max": 20,
+          "top_k": [
+            {
+              "patient_id": "P03",
+              "wait": 20
+            },
+            {
+              "patient_id": "P05",
+              "wait": 20
+            },
+            {
+              "patient_id": "P04",
+              "wait": 3
+            }
+          ]
+        },
+        "fairness": {
+          "n": 6,
+          "inversions_vs_arrival": 3,
+          "inversions_vs_urgency": 9,
+          "disagreement_vs_arrival": 0.2,
+          "disagreement_vs_urgency": 0.6
+        },
+        "per_group": [
+          {
+            "group": "private",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 10.0,
+              "median": 10.0,
+              "p90": 20.0,
+              "max": 20,
+              "top_k": [
+                {
+                  "patient_id": "P05",
+                  "wait": 20
+                },
+                {
+                  "patient_id": "P01",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          },
+          {
+            "group": "public",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 10.0,
+              "median": 10.0,
+              "p90": 20.0,
+              "max": 20,
+              "top_k": [
+                {
+                  "patient_id": "P03",
+                  "wait": 20
+                },
+                {
+                  "patient_id": "P06",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 1,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 1.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          },
+          {
+            "group": "uninsured",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 1.5,
+              "median": 1.5,
+              "p90": 3.0,
+              "max": 3,
+              "top_k": [
+                {
+                  "patient_id": "P04",
+                  "wait": 3
+                },
+                {
+                  "patient_id": "P02",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          }
+        ]
+      },
+      "engine": {
+        "scheduler": "reference",
+        "analytics": "reference"
+      },
+      "runtime_ms": 0.13339996803551912
+    },
+    {
+      "policy": "optimal",
+      "schedule": {
+        "policy": "optimal",
+        "appointments": [
+          {
+            "patient_id": "P02",
+            "provider_id": "D01",
+            "start": 5,
+            "end": 15,
+            "wait": 0,
+            "order": 0
+          },
+          {
+            "patient_id": "P04",
+            "provider_id": "D02",
+            "start": 12,
+            "end": 17,
+            "wait": 0,
+            "order": 1
+          },
+          {
+            "patient_id": "P03",
+            "provider_id": "D01",
+            "start": 15,
+            "end": 35,
+            "wait": 5,
+            "order": 2
+          },
+          {
+            "patient_id": "P05",
+            "provider_id": "D02",
+            "start": 17,
+            "end": 57,
+            "wait": 2,
+            "order": 3
+          },
+          {
+            "patient_id": "P06",
+            "provider_id": "D01",
+            "start": 35,
+            "end": 50,
+            "wait": 15,
+            "order": 4
+          },
+          {
+            "patient_id": "P01",
+            "provider_id": "D01",
+            "start": 50,
+            "end": 80,
+            "wait": 50,
+            "order": 5
+          }
+        ],
+        "unserved": []
+      },
+      "metrics": {
+        "served": 6,
+        "unserved": 0,
+        "makespan": 80,
+        "total_weighted_wait": 285.7,
+        "provider_utilization": {
+          "D01": 0.625,
+          "D02": 0.375
+        },
+        "waits": {
+          "count": 6,
+          "mean": 12.0,
+          "median": 3.5,
+          "p90": 50.0,
+          "max": 50,
+          "top_k": [
+            {
+              "patient_id": "P01",
+              "wait": 50
+            },
+            {
+              "patient_id": "P06",
+              "wait": 15
+            },
+            {
+              "patient_id": "P03",
+              "wait": 5
+            }
+          ]
+        },
+        "fairness": {
+          "n": 6,
+          "inversions_vs_arrival": 6,
+          "inversions_vs_urgency": 2,
+          "disagreement_vs_arrival": 0.4,
+          "disagreement_vs_urgency": 0.13333333333333333
+        },
+        "per_group": [
+          {
+            "group": "private",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 26.0,
+              "median": 26.0,
+              "p90": 50.0,
+              "max": 50,
+              "top_k": [
+                {
+                  "patient_id": "P01",
+                  "wait": 50
+                },
+                {
+                  "patient_id": "P05",
+                  "wait": 2
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 1,
+              "inversions_vs_urgency": 0,
+              "disagreement_vs_arrival": 1.0,
+              "disagreement_vs_urgency": 0.0
+            }
+          },
+          {
+            "group": "public",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 10.0,
+              "median": 10.0,
+              "p90": 15.0,
+              "max": 15,
+              "top_k": [
+                {
+                  "patient_id": "P06",
+                  "wait": 15
+                },
+                {
+                  "patient_id": "P03",
+                  "wait": 5
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 0,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 0.0
+            }
+          },
+          {
+            "group": "uninsured",
+            "served": 2,
+            "unserved": 0,
+            "waits": {
+              "count": 2,
+              "mean": 0.0,
+              "median": 0.0,
+              "p90": 0.0,
+              "max": 0,
+              "top_k": [
+                {
+                  "patient_id": "P02",
+                  "wait": 0
+                },
+                {
+                  "patient_id": "P04",
+                  "wait": 0
+                }
+              ]
+            },
+            "fairness": {
+              "n": 2,
+              "inversions_vs_arrival": 0,
+              "inversions_vs_urgency": 1,
+              "disagreement_vs_arrival": 0.0,
+              "disagreement_vs_urgency": 1.0
+            }
+          }
+        ]
+      },
+      "engine": {
+        "scheduler": "reference",
+        "analytics": "reference"
+      },
+      "runtime_ms": 10.9148999908939
+    }
+  ]
+}

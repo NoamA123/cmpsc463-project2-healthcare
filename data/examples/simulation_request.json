@@ -1,0 +1,89 @@
+{
+  "dataset": {
+    "meta": {
+      "name": "tiny",
+      "schema_version": "1.0",
+      "seed": null,
+      "horizon": 120,
+      "groups": [
+        "private",
+        "public",
+        "uninsured"
+      ],
+      "description": "6 hand-written patients, 2 providers. Small enough for the optimal policy."
+    },
+    "providers": [
+      {
+        "id": "D01",
+        "name": "Dr. Adams",
+        "shift_start": 0,
+        "shift_end": 120
+      },
+      {
+        "id": "D02",
+        "name": "Dr. Baker",
+        "shift_start": 0,
+        "shift_end": 120
+      }
+    ],
+    "patients": [
+      {
+        "id": "P01",
+        "arrival_time": 0,
+        "visit_length": 30,
+        "urgency": 1,
+        "group": "private"
+      },
+      {
+        "id": "P02",
+        "arrival_time": 5,
+        "visit_length": 10,
+        "urgency": 4,
+        "group": "uninsured"
+      },
+      {
+        "id": "P03",
+        "arrival_time": 10,
+        "visit_length": 20,
+        "urgency": 2,
+        "group": "public"
+      },
+      {
+        "id": "P04",
+        "arrival_time": 12,
+        "visit_length": 5,
+        "urgency": 5,
+        "group": "uninsured"
+      },
+      {
+        "id": "P05",
+        "arrival_time": 15,
+        "visit_length": 40,
+        "urgency": 3,
+        "group": "private"
+      },
+      {
+        "id": "P06",
+        "arrival_time": 20,
+        "visit_length": 15,
+        "urgency": 2,
+        "group": "public"
+      }
+    ]
+  },
+  "policies": [
+    "fifo",
+    "sjf",
+    "urgency",
+    "wspt",
+    "optimal"
+  ],
+  "weights": {
+    "urgency_power": 2.0,
+    "group_multipliers": {
+      "uninsured": 1.5
+    },
+    "aging_rate": 0.05
+  },
+  "top_k": 3
+}

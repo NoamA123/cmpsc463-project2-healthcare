@@ -1,0 +1,42 @@
+{
+  "additionalProperties": false,
+  "description": "One row of benchmark output (written to ``backend/benchmarks/results/*.json``).",
+  "properties": {
+    "task": {
+      "description": "e.g. \"median\", \"inversions\".",
+      "title": "Task",
+      "type": "string"
+    },
+    "algorithm": {
+      "description": "e.g. \"dselect\", \"rselect\", \"sort\", \"merge_count\", \"brute_force\".",
+      "title": "Algorithm",
+      "type": "string"
+    },
+    "n": {
+      "title": "N",
+      "type": "integer"
+    },
+    "trials": {
+      "title": "Trials",
+      "type": "integer"
+    },
+    "mean_ms": {
+      "title": "Mean Ms",
+      "type": "number"
+    },
+    "min_ms": {
+      "title": "Min Ms",
+      "type": "number"
+    }
+  },
+  "required": [
+    "task",
+    "algorithm",
+    "n",
+    "trials",
+    "mean_ms",
+    "min_ms"
+  ],
+  "title": "BenchmarkRecord",
+  "type": "object"
+}

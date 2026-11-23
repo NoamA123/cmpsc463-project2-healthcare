@@ -1,0 +1,146 @@
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #222;
+  background: #f6f7f9;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+}
+
+h1 {
+  margin-bottom: 0.2rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.muted {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #e2e4e8;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.panel label {
+  display: block;
+  margin: 0.4rem 0;
+}
+
+.panel label.row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+fieldset {
+  border: 1px solid #e2e4e8;
+  border-radius: 6px;
+  margin: 0.75rem 0;
+}
+
+input[type="number"] {
+  width: 5rem;
+  margin-left: 0.4rem;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+button {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #c8ccd2;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #4e79a7;
+  border-color: #4e79a7;
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.tabs button.active {
+  background: #4e79a7;
+  color: white;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  border: 1px solid #e2e4e8;
+  padding: 0.3rem 0.6rem;
+  text-align: right;
+}
+
+th {
+  background: #f0f2f5;
+  text-align: center;
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+}
+
+.warn {
+  color: #b35900;
+}
+
+.error {
+  background: #fdecea;
+  border: 1px solid #e15759;
+  color: #8a1c1c;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}

@@ -46,3 +46,72 @@ Integration with A's and B's modules, and the final demo flow
 Project report: https://docs.google.com/document/d/1waoYEy05nz-PUNVFp-cla_bti6NIjoBVk1uNddRxCd4/edit?usp=sharing
 
 Demo: TODO
+
+## Repository layout
+
+```
+backend/
+  fairsched/            core algorithms package (no web code)
+    schema.py           the data contract: every input and output model
+    datastructures/     min_heap.py, hash_table.py, bst.py          (Noam)
+    scheduling/         policies.py, simulator.py, brute_force.py,
+                        rebooking.py                                (Noam)
+    analytics/          generator.py, selection.py, inversions.py,
+                        metrics.py, baselines.py                    (Yony)
+    reference.py        builtin-based oracle + fallback (not graded)
+    engine.py           runs team modules, falls back to reference
+  server/app.py         FastAPI HTTP API
+  scripts/              make_sample_data, export_schemas, run_benchmarks
+  tests/                pytest; unfinished modules show as "skipped"
+frontend/               React + TypeScript + Vite web app            (Stevens)
+  src/api/              types.ts (mirror of schema.py), client.ts
+  src/components/       dataset/policy panels, Gantt, charts, fairness table
+data/
+  samples/              committed datasets: tiny, small, medium, overloaded
+  examples/             example simulation request + response
+schemas/                JSON Schema generated from schema.py
+docs/                   architecture.md, data-format.md
+```
+
+See [docs/architecture.md](docs/architecture.md) for design decisions and
+[docs/data-format.md](docs/data-format.md) for the input/output format.
+
+## Getting started
+
+Requires Python 3.10+ and Node 20+.
+
+Backend (from `backend/`):
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1          # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+pytest                                 # run tests
+uvicorn server.app:app --reload        # API on http://localhost:8000 (docs at /docs)
+```
+
+Frontend (from `frontend/`, with the API running):
+
+```powershell
+npm install
+npm run dev                            # http://localhost:5173
+```
+
+Useful scripts (from `backend/`):
+
+```powershell
+python -m scripts.make_sample_data     # regenerate data/samples and data/examples
+python -m scripts.export_schemas       # regenerate schemas/ after editing schema.py
+python -m scripts.run_benchmarks       # selection/inversion benchmarks
+```
+
+## Workflow
+
+* Every algorithm module has its interface and docstring spec in place and
+  raises `NotImplementedError`. Implement it, and the matching tests in
+  `backend/tests/` switch from skipped to passing or failing.
+* Until a module is done, the app uses `fairsched/reference.py` instead, and
+  the UI's "Engine" column shows `reference`. Before the demo, run the API with
+  `FAIRSCHED_ENGINE=team` to make sure nothing falls back.
+* If you change `schema.py`, re-run `export_schemas` and update
+  `frontend/src/api/types.ts` in the same commit.

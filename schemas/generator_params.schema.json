@@ -1,0 +1,76 @@
+{
+  "additionalProperties": false,
+  "description": "Knobs for the synthetic dataset generator.",
+  "properties": {
+    "name": {
+      "default": "generated",
+      "title": "Name",
+      "type": "string"
+    },
+    "n_patients": {
+      "default": 50,
+      "maximum": 100000,
+      "minimum": 1,
+      "title": "N Patients",
+      "type": "integer"
+    },
+    "n_providers": {
+      "default": 3,
+      "maximum": 100,
+      "minimum": 1,
+      "title": "N Providers",
+      "type": "integer"
+    },
+    "horizon": {
+      "default": 480,
+      "description": "Arrivals fall in [0, horizon).",
+      "exclusiveMinimum": 0,
+      "title": "Horizon",
+      "type": "integer"
+    },
+    "group_mix": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "Relative frequency of each group (normalized automatically).",
+      "title": "Group Mix",
+      "type": "object"
+    },
+    "urgency_weights": {
+      "description": "Relative frequency of urgency 1..5.",
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "title": "Urgency Weights",
+      "type": "array"
+    },
+    "visit_length_min": {
+      "default": 10,
+      "exclusiveMinimum": 0,
+      "title": "Visit Length Min",
+      "type": "integer"
+    },
+    "visit_length_max": {
+      "default": 45,
+      "exclusiveMinimum": 0,
+      "title": "Visit Length Max",
+      "type": "integer"
+    },
+    "seed": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": 42,
+      "title": "Seed"
+    }
+  },
+  "title": "GeneratorParams",
+  "type": "object"
+}

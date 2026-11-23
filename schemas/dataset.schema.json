@@ -1,0 +1,160 @@
+{
+  "$defs": {
+    "DatasetMeta": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seed"
+        },
+        "horizon": {
+          "description": "Length of the simulated day in minutes.",
+          "exclusiveMinimum": 0,
+          "title": "Horizon",
+          "type": "integer"
+        },
+        "groups": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Groups",
+          "type": "array"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "horizon",
+        "groups"
+      ],
+      "title": "DatasetMeta",
+      "type": "object"
+    },
+    "Patient": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Unique id, e.g. \"P0001\".",
+          "title": "Id",
+          "type": "string"
+        },
+        "arrival_time": {
+          "description": "Minutes since clinic opens.",
+          "minimum": 0,
+          "title": "Arrival Time",
+          "type": "integer"
+        },
+        "visit_length": {
+          "description": "Visit duration in minutes.",
+          "exclusiveMinimum": 0,
+          "title": "Visit Length",
+          "type": "integer"
+        },
+        "urgency": {
+          "description": "1 = routine, 5 = critical.",
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Urgency",
+          "type": "integer"
+        },
+        "group": {
+          "description": "Insurance/income group; must appear in meta.groups.",
+          "title": "Group",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "arrival_time",
+        "visit_length",
+        "urgency",
+        "group"
+      ],
+      "title": "Patient",
+      "type": "object"
+    },
+    "Provider": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Unique id, e.g. \"D01\".",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "shift_start": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Shift Start",
+          "type": "integer"
+        },
+        "shift_end": {
+          "description": "A provider may not START a visit at or after this time.",
+          "exclusiveMinimum": 0,
+          "title": "Shift End",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "shift_end"
+      ],
+      "title": "Provider",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/DatasetMeta"
+    },
+    "providers": {
+      "items": {
+        "$ref": "#/$defs/Provider"
+      },
+      "minItems": 1,
+      "title": "Providers",
+      "type": "array"
+    },
+    "patients": {
+      "items": {
+        "$ref": "#/$defs/Patient"
+      },
+      "title": "Patients",
+      "type": "array"
+    }
+  },
+  "required": [
+    "meta",
+    "providers",
+    "patients"
+  ],
+  "title": "Dataset",
+  "type": "object"
+}

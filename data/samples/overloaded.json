@@ -1,0 +1,345 @@
+{
+  "meta": {
+    "name": "overloaded",
+    "schema_version": "1.0",
+    "seed": 3,
+    "horizon": 480,
+    "groups": [
+      "private",
+      "public",
+      "uninsured"
+    ],
+    "description": "Synthetic: 45 patients, 2 providers."
+  },
+  "providers": [
+    {
+      "id": "D01",
+      "name": "Provider 1",
+      "shift_start": 0,
+      "shift_end": 480
+    },
+    {
+      "id": "D02",
+      "name": "Provider 2",
+      "shift_start": 0,
+      "shift_end": 480
+    }
+  ],
+  "patients": [
+    {
+      "id": "P0001",
+      "arrival_time": 16,
+      "visit_length": 22,
+      "urgency": 5,
+      "group": "private"
+    },
+    {
+      "id": "P0002",
+      "arrival_time": 21,
+      "visit_length": 29,
+      "urgency": 3,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0003",
+      "arrival_time": 23,
+      "visit_length": 34,
+      "urgency": 3,
+      "group": "private"
+    },
+    {
+      "id": "P0004",
+      "arrival_time": 31,
+      "visit_length": 11,
+      "urgency": 5,
+      "group": "private"
+    },
+    {
+      "id": "P0005",
+      "arrival_time": 67,
+      "visit_length": 29,
+      "urgency": 2,
+      "group": "public"
+    },
+    {
+      "id": "P0006",
+      "arrival_time": 69,
+      "visit_length": 41,
+      "urgency": 1,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0007",
+      "arrival_time": 83,
+      "visit_length": 30,
+      "urgency": 5,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0008",
+      "arrival_time": 118,
+      "visit_length": 31,
+      "urgency": 3,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0009",
+      "arrival_time": 121,
+      "visit_length": 44,
+      "urgency": 1,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0010",
+      "arrival_time": 132,
+      "visit_length": 43,
+      "urgency": 2,
+      "group": "private"
+    },
+    {
+      "id": "P0011",
+      "arrival_time": 134,
+      "visit_length": 19,
+      "urgency": 3,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0012",
+      "arrival_time": 137,
+      "visit_length": 40,
+      "urgency": 2,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0013",
+      "arrival_time": 137,
+      "visit_length": 25,
+      "urgency": 2,
+      "group": "public"
+    },
+    {
+      "id": "P0014",
+      "arrival_time": 158,
+      "visit_length": 10,
+      "urgency": 1,
+      "group": "public"
+    },
+    {
+      "id": "P0015",
+      "arrival_time": 173,
+      "visit_length": 30,
+      "urgency": 2,
+      "group": "private"
+    },
+    {
+      "id": "P0016",
+      "arrival_time": 186,
+      "visit_length": 21,
+      "urgency": 2,
+      "group": "private"
+    },
+    {
+      "id": "P0017",
+      "arrival_time": 192,
+      "visit_length": 18,
+      "urgency": 1,
+      "group": "public"
+    },
+    {
+      "id": "P0018",
+      "arrival_time": 197,
+      "visit_length": 45,
+      "urgency": 1,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0019",
+      "arrival_time": 198,
+      "visit_length": 37,
+      "urgency": 2,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0020",
+      "arrival_time": 203,
+      "visit_length": 19,
+      "urgency": 1,
+      "group": "private"
+    },
+    {
+      "id": "P0021",
+      "arrival_time": 210,
+      "visit_length": 19,
+      "urgency": 1,
+      "group": "public"
+    },
+    {
+      "id": "P0022",
+      "arrival_time": 212,
+      "visit_length": 17,
+      "urgency": 1,
+      "group": "public"
+    },
+    {
+      "id": "P0023",
+      "arrival_time": 223,
+      "visit_length": 29,
+      "urgency": 2,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0024",
+      "arrival_time": 227,
+      "visit_length": 18,
+      "urgency": 4,
+      "group": "private"
+    },
+    {
+      "id": "P0025",
+      "arrival_time": 233,
+      "visit_length": 29,
+      "urgency": 2,
+      "group": "private"
+    },
+    {
+      "id": "P0026",
+      "arrival_time": 238,
+      "visit_length": 32,
+      "urgency": 3,
+      "group": "private"
+    },
+    {
+      "id": "P0027",
+      "arrival_time": 240,
+      "visit_length": 26,
+      "urgency": 2,
+      "group": "private"
+    },
+    {
+      "id": "P0028",
+      "arrival_time": 242,
+      "visit_length": 14,
+      "urgency": 3,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0029",
+      "arrival_time": 291,
+      "visit_length": 16,
+      "urgency": 3,
+      "group": "private"
+    },
+    {
+      "id": "P0030",
+      "arrival_time": 293,
+      "visit_length": 32,
+      "urgency": 2,
+      "group": "public"
+    },
+    {
+      "id": "P0031",
+      "arrival_time": 304,
+      "visit_length": 26,
+      "urgency": 2,
+      "group": "private"
+    },
+    {
+      "id": "P0032",
+      "arrival_time": 332,
+      "visit_length": 16,
+      "urgency": 1,
+      "group": "private"
+    },
+    {
+      "id": "P0033",
+      "arrival_time": 361,
+      "visit_length": 27,
+      "urgency": 3,
+      "group": "private"
+    },
+    {
+      "id": "P0034",
+      "arrival_time": 366,
+      "visit_length": 25,
+      "urgency": 4,
+      "group": "public"
+    },
+    {
+      "id": "P0035",
+      "arrival_time": 367,
+      "visit_length": 40,
+      "urgency": 2,
+      "group": "public"
+    },
+    {
+      "id": "P0036",
+      "arrival_time": 395,
+      "visit_length": 11,
+      "urgency": 5,
+      "group": "public"
+    },
+    {
+      "id": "P0037",
+      "arrival_time": 397,
+      "visit_length": 14,
+      "urgency": 1,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0038",
+      "arrival_time": 403,
+      "visit_length": 36,
+      "urgency": 5,
+      "group": "private"
+    },
+    {
+      "id": "P0039",
+      "arrival_time": 415,
+      "visit_length": 42,
+      "urgency": 1,
+      "group": "public"
+    },
+    {
+      "id": "P0040",
+      "arrival_time": 425,
+      "visit_length": 27,
+      "urgency": 1,
+      "group": "private"
+    },
+    {
+      "id": "P0041",
+      "arrival_time": 437,
+      "visit_length": 40,
+      "urgency": 1,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0042",
+      "arrival_time": 438,
+      "visit_length": 27,
+      "urgency": 5,
+      "group": "public"
+    },
+    {
+      "id": "P0043",
+      "arrival_time": 441,
+      "visit_length": 34,
+      "urgency": 2,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0044",
+      "arrival_time": 451,
+      "visit_length": 27,
+      "urgency": 2,
+      "group": "uninsured"
+    },
+    {
+      "id": "P0045",
+      "arrival_time": 474,
+      "visit_length": 43,
+      "urgency": 2,
+      "group": "private"
+    }
+  ]
+}
