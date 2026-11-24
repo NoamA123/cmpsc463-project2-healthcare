@@ -120,12 +120,12 @@ Validation: unique patient and provider ids, every `patient.group` listed in
 
 ## Sample datasets (`data/samples/`)
 
-| Name | Patients | Providers | Purpose |
-|---|---|---|---|
-| `tiny` | 6 | 2 | Hand-written; checkable by hand; works with `optimal` |
-| `small` | 30 | 4 | Quick runs (~85% load, 4-hour day) |
-| `medium` | 200 | 12 | Typical demo size (~95% load) |
-| `overloaded` | 45 | 2 | ~130% load, so policies must choose who goes unserved |
+|     Name     | Patients | Providers |                        Purpose                        |
+|--------------|----------|-----------|-------------------------------------------------------|
+| `tiny`       |    6     |     2     | Hand-written; checkable by hand; works with `optimal` |
+| `small`      |    30    |     4     | Quick runs (~85% load, 4-hour day)                    |
+| `medium`     |    200   |     12    | Typical demo size (~95% load)                         |
+| `overloaded` |    45    |     2     | ~130% load, so policies must choose who goes unserved |
 
 Regenerate with `python -m scripts.make_sample_data` (from `backend/`). Put
 throwaway datasets in `data/generated/`, which git ignores.
