@@ -47,28 +47,28 @@ prove nothing is using the reference), or `reference` to force it.
 
 ## Module ownership
 
-| Area | Files | Owner |
-|---|---|---|
-| Min-heap, hash table, slot BST | `fairsched/datastructures/*` | Noam |
-| Policies, simulation loop, brute force, rebooking | `fairsched/scheduling/*` | Noam |
-| Dataset generator | `fairsched/analytics/generator.py` | Yony |
-| Rselect / Dselect, percentiles, top-k | `fairsched/analytics/selection.py` | Yony |
-| Inversion counting | `fairsched/analytics/inversions.py` | Yony |
-| Per-policy and per-group metrics | `fairsched/analytics/metrics.py` | Yony |
-| Benchmarks and tests | `scripts/run_benchmarks.py`, `tests/` | Yony |
-| API | `server/app.py` | shared |
-| Web app | `frontend/` | Stevens |
+| Area                                              |                 Files                 |  Owner  |
+|---------------------------------------------------|---------------------------------------|---------|
+| Min-heap, hash table, slot BST                    | `fairsched/datastructures/*`          |  Noam   |
+| Policies, simulation loop, brute force, rebooking | `fairsched/scheduling/*`              |  Noam   |
+| Dataset generator                                 | `fairsched/analytics/generator.py`    |  Yony   |
+| Rselect / Dselect, percentiles, top-k             | `fairsched/analytics/selection.py`    |  Yony   |
+| Inversion counting                                | `fairsched/analytics/inversions.py`   |  Yony   |
+| Per-policy and per-group metrics                  | `fairsched/analytics/metrics.py`      |  Yony   |
+| Benchmarks and tests                              | `scripts/run_benchmarks.py`, `tests/` |  Yony   |
+| API                                               | `server/app.py`                       | shared  |
+| Web app                                           | `frontend/`                           | Stevens |
 
 ## API
 
-| Method | Path | Body → Response |
-|---|---|---|
-| GET | `/api/health` | → `{status, schema_version}` |
-| GET | `/api/policies` | → `PolicyInfo[]` |
-| GET | `/api/datasets` | → sample names (files in `data/samples/`) |
-| GET | `/api/datasets/{name}` | → `Dataset` |
-| POST | `/api/datasets/generate` | `GeneratorParams` → `Dataset` |
-| POST | `/api/simulate` | `SimulationRequest` → `SimulationResponse` |
+| Method |            Path          |               Body → Response                |
+|--------|--------------------------|----------------------------------------------|
+|   GET  | `/api/health`            | → `{status, schema_version}`                 |
+|   GET  | `/api/policies`          | → `PolicyInfo[]`                             |
+|   GET  | `/api/datasets`          | → sample names (files in `data/samples/`)    |
+|   GET  | `/api/datasets/{name}`   | → `Dataset`                                  |
+|  POST  | `/api/datasets/generate` |   `GeneratorParams` → `Dataset`              |
+|  POST  | `/api/simulate`          |   `SimulationRequest` → `SimulationResponse` |
 
 Errors: `404` unknown sample, `422` invalid input (including `optimal` on more
 than 8 patients), `501` a module is unimplemented while `FAIRSCHED_ENGINE=team`.
